@@ -32,25 +32,37 @@ public:
 
 };
 
-class info :public one
+class info : public one
 {
 public:
 	char name[50], time[50];
 	int num, age;
+
 	void get()
 	{
 		system("cls");
 		cin.sync();
 		cout << "\n Enter the patient name: ";
 		cin.getline(name, 50);
+
+		cin.ignore(); // Ignore the newline character left in the buffer
+
 		cout << "\n Enter the Appointment Time: ";
 		cin.getline(time, 50);
+
+		cin.ignore(); // Ignore the newline character left in the buffer
+
+
 		cout << "\n Enter Age: ";
 		cin >> age;
+
+		cin.ignore(); // Ignore the newline character left in the buffer
+
 		cout << "\n Enter Appointment No: ";
 		cin >> num;
 
 	}
+
 	void show()
 	{
 		cout << "\nName: " << name;
