@@ -207,10 +207,9 @@ public:
 
 };
 
-class staff :public one
+class staff : public one
 {
 public:
-
 	char all[999];
 	char name[50], age[20], sal[30], pos[20];
 
@@ -222,21 +221,30 @@ public:
 			cin.sync();
 			cout << "\n Enter name: ";
 			cin.getline(name, 50);
+
+			cin.ignore(); // Ignore the newline character left in the buffer
+
 			cout << "\n Enter Age: ";
 			cin.getline(age, 20);
-			cout << "\n Enter Sallary: ";
+			cin.ignore(); // Ignore the newline character left in the buffer
+
+			cout << "\n Enter Salary: ";
 			cin.getline(sal, 30);
-			cout << "\n Enter Workinng Position: ";
+			cin.ignore(); // Ignore the newline character left in the buffer
+
+			cout << "\n Enter Working Position: ";
 			cin.getline(pos, 20);
+			cin.ignore(); // Ignore the newline character left in the buffer
+
 		}
 
-		out << "\n Name: " << name << "\n Age: " << age << "\n Sallary: " << sal << "\n Working Position \n" << pos;
+		out << "\n Name: " << name << "\n Age: " << age << "\n Sallary: " << sal << "\n Working Position: " << pos;
 		out.close();
-		cout << "\n Your information has been saved: \n\t\t Press any key to continue ";
+		cout << "\n Your information has been saved.\n\t Press any key to continue ";
 		cin.get();
 		menu();
-
 	}
+
 	void show()
 	{
 		ifstream in("staff.txt");
