@@ -81,19 +81,30 @@ public:
 	{
 		system("cls");
 		ofstream out("Rana.txt", ios::app | ios::binary);
+		if (!out)
+		{
+			cout << "Error opening file for writing." << endl;
+			cin.get();
+			menu();
+		}
+
 		a1.get();
 		out.write((char*)&a1, sizeof(info));
+		if (!out)
+		{
+			cout << "Error writing to file." << endl;
+		}
 		out.close();
+
 		cout << "Your Entry Has been saved ";
 		cin.get();
 		menu();
-
 	}
+
 
 	void show()
 	{
-
-		ifstream in("rana.txt");
+		ifstream in("Rana.txt", ios::binary);
 		if (!in)
 		{
 			cout << "\n\n No Data In the File ";
@@ -101,20 +112,27 @@ public:
 			cin.get();
 			menu();
 		}
-
 		else
 		{
-			while (!in.eof())
+			while (in.read((char*)&a1, sizeof(a1)))
 			{
-				in.read((char*)&a1, sizeof(a1));
-				a1.show();
+				if (in)
+				{
+					a1.show();
+				}
+				else if (!in.eof())
+				{
+					cout << "\n\n Error reading data from the file.";
+					cin.get();
+					menu();
+				}
 			}
 			in.close();
 		}
-		in.close();
 		cin.get();
 		menu();
 	}
+
 
 };
 
@@ -422,9 +440,9 @@ void menu()
 	cout << "\n\n\t2-\t\tPress 2 for Doctor Appointment\n\n";
 	cout << "\n\n\t3-\t\tPress 3 for Saving Staff Information\n\n";
 	cout << "\n\n\t4-\t\tPress 4 for Checking Patient Appointment Menu:\n\n";
-	cout << "\n\n\t4-\t\tPress 5 for Checking Staff Information Menu:\n\n";
-	cout << "\n\n\t5-\t\tPress 6 for Change Password or Create password :\n\n";
-	cout << "\n\n\t6-\t\t[     Press 7 for Logout       ]\n";
+	cout << "\n\n\t5-\t\tPress 5 for Checking Staff Information Menu:\n\n";
+	cout << "\n\n\t6-\t\tPress 6 for Change Password or Create password :\n\n";
+	cout << "\n\n\t7-\t\t[     Press 7 for Logout       ]\n";
 
 	cout << "\n=================================================================================================\n";
 	cout << "\n\n\tPlease Enter Your Choice : ";
@@ -491,9 +509,6 @@ void cpascode()
 
 int main()
 {
-
-
-
 	pascode();
 	system("pause");
 }
