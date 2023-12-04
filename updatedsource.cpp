@@ -12,16 +12,12 @@ void cpascode();
 
 using namespace std;
 
-// Hashing function (you may use a library or a more secure hashing algorithm)
+// Hashing function
 string hashPassword(const string& password)
 {
-	// This is a simple example; in a real-world scenario, use a secure hashing algorithm.
-	// Do not use MD5 or SHA-1 for cryptographic security.
-	// You should use a more secure algorithm like bcrypt, Argon2, or scrypt.
+	//TODO: insert hashing function here 
 	return password;
 }
-
-
 
 class one
 {
@@ -31,6 +27,8 @@ public:
 	virtual void show() = 0;
 
 };
+
+//==========Patient information==========
 
 class info : public one
 {
@@ -45,18 +43,17 @@ public:
 		cout << "\n Enter the patient name: ";
 		cin.getline(name, 50);
 
-		cin.ignore(); // Ignore the newline character left in the buffer
+		cin.ignore(); 
 
 		cout << "\n Enter the Appointment Time: ";
 		cin.getline(time, 50);
 
-		cin.ignore(); // Ignore the newline character left in the buffer
-
+		cin.ignore(); 
 
 		cout << "\n Enter Age: ";
 		cin >> age;
 
-		cin.ignore(); // Ignore the newline character left in the buffer
+		cin.ignore(); 
 
 		cout << "\n Enter Appointment No: ";
 		cin >> num;
@@ -73,14 +70,16 @@ public:
 
 };
 
-class rana :public info
+//========== Class for Dr. Taylor's information ==========
+
+class Taylor :public info
 {
 public:
 	info a1;
 	void get()
 	{
 		system("cls");
-		ofstream out("Rana.txt", ios::app | ios::binary);
+		ofstream out("Taylor.txt", ios::app | ios::binary);
 		if (!out)
 		{
 			cout << "Error opening file for writing." << endl;
@@ -104,7 +103,7 @@ public:
 
 	void show()
 	{
-		ifstream in("Rana.txt", ios::binary);
+		ifstream in("Taylor.txt", ios::binary);
 		if (!in)
 		{
 			cout << "\n\n No Data In the File ";
@@ -132,18 +131,18 @@ public:
 		cin.get();
 		menu();
 	}
-
-
 };
 
-class waqar :public info
+//========== Class for Dr. Jackson's information ==========
+
+class Jackson :public info
 {
 public:
 	info a1;
 	void get()
 	{
 		system("cls");
-		ofstream out("waqar.txt", ios::app | ios::binary);
+		ofstream out("Jackson.txt", ios::app | ios::binary);
 		a1.get();
 		out.write((char*)&a1, sizeof(info));
 		out.close();
@@ -155,7 +154,7 @@ public:
 	void show()
 	{
 
-		ifstream in("rana.txt");
+		ifstream in("Taylor.txt");
 		if (!in)
 		{
 			cout << "\n\n No Data In the File ";
@@ -181,15 +180,16 @@ public:
 
 };
 
+//========== Class for Dr. Williams' information ==========
 
-class Ahmad :public info
+class Williams :public info
 {
 public:
 	info a1;
 	void get()
 	{
 		system("cls");
-		ofstream out("Ahmad.txt", ios::app | ios::binary);
+		ofstream out("Williams.txt", ios::app | ios::binary);
 		a1.get();
 		out.write((char*)&a1, sizeof(info));
 		out.close();
@@ -201,7 +201,7 @@ public:
 	void show()
 	{
 
-		ifstream in("Ahmad.txt");
+		ifstream in("Williams.txt");
 		if (!in)
 		{
 			cout << "\n\n No Data In the File ";
@@ -225,6 +225,8 @@ public:
 
 };
 
+//========== Staff info ==========
+
 class staff : public one
 {
 public:
@@ -240,19 +242,19 @@ public:
 			cout << "\n Enter name: ";
 			cin.getline(name, 50);
 
-			cin.ignore(); // Ignore the newline character left in the buffer
+			cin.ignore(); 
 
 			cout << "\n Enter Age: ";
 			cin.getline(age, 20);
-			cin.ignore(); // Ignore the newline character left in the buffer
+			cin.ignore(); 
 
 			cout << "\n Enter Salary: ";
 			cin.getline(sal, 30);
-			cin.ignore(); // Ignore the newline character left in the buffer
+			cin.ignore(); 
 
 			cout << "\n Enter Working Position: ";
 			cin.getline(pos, 20);
-			cin.ignore(); // Ignore the newline character left in the buffer
+			cin.ignore();
 
 		}
 
@@ -281,10 +283,9 @@ public:
 		cin.get();
 		menu();
 	}
-
-
 };
 
+//========== Available doctors ==========
 class information
 {
 public:
@@ -295,45 +296,43 @@ public:
 		cout << "\n\n\t\t(Three Doctors Available) \n\n \t\t [Information and Timing Are Given Below]\n";
 		cout << "-------------------------------------------------------------\n";
 		cout << "\t\t Dr Available: \n";
-		cout << "\t\t Dr Rana (skin specialist)\n\n";
+		cout << "\t\t Dr Taylor (skin specialist)\n\n";
 		cout << "\t\t\t [[Timing]]: \n\n";
 		cout << "\tMonday To Friday\t\t9AM to 5PM\n";
 		cout << "\tSaturday         \t\t9AM to 1PM\n";
 		cout << "\tSunday            \t\tOff\n";
 		cout << "\n===========================================================\n";
-		cout << "\t\t Dr waqar (child specialist)\n\n";
+		cout << "\t\t Dr Jackson (child specialist)\n\n";
 		cout << "\t\t\t [[Timing]]: \n\n";
 		cout << "\tMonday To Friday\t\t2pm to 10PM\n";
 		cout << "\tSaturday         \t\t8AM to 10PM\n";
 		cout << "\tSunday            \t\t12PM to 9PM\n";
 		cout << "\n===========================================================\n";
-		cout << "\t\t Dr Ahmad (DVM)\n\n";
+		cout << "\t\t Dr Williams (DVM)\n\n";
 		cout << "\t\t\t [[Timing]]: \n\n";
 		cout << "\tMonday To Friday\t\t8AM to 5PM\n";
 		cout << "\tSaturday         \t\t10AM to 1PM\n";
 		cout << "\tSunday            \t\tOff\n";
 		cout << "\n===========================================================\n";
 		cout << "\nPress Any Key For Continue: ";
-		//cin.ignore();
 		cin.get();
-		//menu();
+
 	}
-
-
-
 };
+
+//========== Function to initiate a doctor's appointment ==========
 
 void call_dr()
 {
 	system("cls");
 	int choice;
-	cout << "\n\n\n\t\tPress 1 for Dr Rana \n\n\t\t Press 2 for Dr waqar \n\n\t\t Press 3 for Dr Ahmad";
+	cout << "\n\n\n\t\tPress 1 for Dr Taylor \n\n\t\t Press 2 for Dr Jackson \n\n\t\t Press 3 for Dr Williams";
 	cin >> choice;
 
 	one* ptr;
-	rana s3;
-	waqar s4;
-	Ahmad s5;
+	Taylor s3;
+	Jackson s4;
+	Williams s5;
 	if (choice == 1)
 	{
 		ptr = &s3;
@@ -354,19 +353,19 @@ void call_dr()
 		cout << "Sorry Invalid Choice";
 	}
 
-
 }
+//========== Function to display patient information for a selected doctor ==========
 void pinfoshow()
 {
 	system("cls");
 	int choice;
-	cout << "\n\n\t\tPress 1 for Dr Rana \n\n\t\tPress 2 for Dr waqar \n\n\t\tPress 3 for Dr Ahmad";
-	cout << "Please Eneter Your Choice : ";
+	cout << "\n\n\t\tPress 1 for Dr Taylor \n\n\t\tPress 2 for Dr Jackson \n\n\t\tPress 3 for Dr Williams";
+	cout << "Please Enter Your Choice : ";
 	cin >> choice;
 	one* ptr;
-	rana s3;
-	waqar s4;
-	Ahmad s5;
+	Taylor s3;
+	Jackson s4;
+	Williams s5;
 	if (choice == 1)
 	{
 		ptr = &s3;
@@ -390,6 +389,7 @@ void pinfoshow()
 	}
 }
 
+//========== Function to validate the password from a file ==========
 void pascode()
 {
 	system("cls");
@@ -400,7 +400,7 @@ void pascode()
 	ifstream in("password.txt");
 	{
 		cin.sync();
-		cout << "\n\n\n\n\t\tEnter The New password: ";
+		cout << "\n\n\n\n\t\tEnter The password: ";
 		cin.getline(p1, 50);
 		in.getline(p2, 50);
 		if (strcmp(p2, p1) == 0)
@@ -418,7 +418,7 @@ void pascode()
 
 }
 
-
+//========== Function providing the main menu for the clinic management system ==========
 
 void menu()
 {
@@ -429,7 +429,7 @@ void menu()
 	cout << "\n";
 
 	cout << "\t\t                |  ++++++++ Main Menu ++++++++++++   | \n";
-	cout << "\t\t                |      Hospital Management System    |\n";
+	cout << "\t\t                |      Houston Clinic System Menu    |\n";
 	cout << "\t\t                |====================================|    \n";
 
 	cout << "\n------------------------------------------------------------------------------------\n ";
@@ -437,7 +437,7 @@ void menu()
 
 
 	cout << "\n\n\t1-\t\tPress 1 for Available Doctor Information\n\n";
-	cout << "\n\n\t2-\t\tPress 2 for Doctor Appointment\n\n";
+	cout << "\n\n\t2-\t\tPress 2 for making a Doctor Appointment\n\n";
 	cout << "\n\n\t3-\t\tPress 3 for Saving Staff Information\n\n";
 	cout << "\n\n\t4-\t\tPress 4 for Checking Patient Appointment Menu:\n\n";
 	cout << "\n\n\t5-\t\tPress 5 for Checking Staff Information Menu:\n\n";
@@ -490,6 +490,8 @@ void menu()
 	}
 }
 
+// ========== Function to change the password ==========
+
 void cpascode()
 {
 	char n[50];
@@ -507,6 +509,8 @@ void cpascode()
 	menu();
 }
 
+//========== Main function ==========
+// initiating the password validation process
 int main()
 {
 	pascode();
